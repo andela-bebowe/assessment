@@ -4,17 +4,45 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+      .list-group-item .btn-primary {
+        margin-left: 50px;
+      }
+      .strike {
+        text-decoration: line-through;
+      }
+      .faint {
+        color: blue;
+      }
+      .group {
+        margin-bottom: 20px;
+      }
+    </style>
     <title></title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="./bower_components/angular/angular.min.js" charset="utf-8"></script>
-
+    <script src="./app.js" charset="utf-8"></script>
   </head>
-  <body>
-    <div class="container">
-      <h1>Tasks</h1>
+  <body ng-app="Task">
+    <div class="container" ng-controller="TaskCtrl as taskmanager">
+      <div class="group">
+        <h1>Tasks</h1>
+        <form class="form-inline">
+          <div class="input-group">
+            <input type="text" name="name" value="" placeholder="Type in text" class="form-control" ng-model="taskmanager.newname">
+          </div>
+          <button type="submit" ng-click="taskmanager.create()" class="btn btn-primary">Create Task</button>
+        </form>
+      </div>
+      
+      <div class="group">
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="task in taskmanager.tasks" ng-class="{strike: task.checked, faint: task.checked}"><span>{{ task.name }}</span>   <button type="button" class="btn btn-primary" ng-click="taskmanager.check(task)">Check</button>    <button type="button" class="btn btn-danger" ng-click="taskmanager.delete(task, $index)">Delete</button></li>
+        </ul>
+      </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
