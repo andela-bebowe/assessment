@@ -5,17 +5,21 @@
   "main": "index.js",
   "scripts": {
     "prestart": "npm install",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js NODE_ENV=dev",
+    "pretest": "npm install",
+    "test": "mocha spec NODE_ENV=test"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "mongoose": "^4.6.3",
-    "nodemon": "^1.11.0"
+    "mongoose": "^4.6.3"
   },
   "devDependencies": {
-    "protractor": "^4.0.9"
+    "chai": "^3.2.0",
+    "chai-http": "^1.0.0",
+    "mocha": "^3.1.2",
+    "nodemon": "^1.11.0"
   }
 }
