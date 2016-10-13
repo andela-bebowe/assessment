@@ -35,3 +35,5 @@ router.put("/tasks/:task_id", function (req, res) {
     })
   })
 })
+
+module.exports = router;
